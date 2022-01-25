@@ -210,22 +210,29 @@ public class ComplexProductListAdapter : BaseAdapter<ProductItem>
 	{
 		try
 		{
-			//save in cache file first
-			this._cartService.CalculateTotalPrice(inserted);
-			var value = this._cartService.AddCartItemToCacheFile(inserted);
-
-			//then insert via API
+			//try invoke API
 			var request = new AddCartItemRequest()
 			{
 				ProductId = inserted.ProductId,
 				Quantity = inserted.Quantity,
 				UserName = GlobalObjects.CurrentUserName
 			};
+
 			this._cartService.AddCartItemViaApi(request);
+
+			//then refresh the cart
+			var cart = this._cartService.GetCartFromApi(GlobalObjects.CurrentUserName);
+			this._cartService.SaveCartToCacheFile(cart);
 		}
 		catch (TimeoutException)
 		{
+			//save in cache file first
+			this._cartService.CopyProductProperties(inserted);
+			var value = this._cartService.AddCartItemToCacheFile(inserted);
 
+			//display last total price
+			var cart = this._cartService.GetCartFromCacheFile();
+			GlobalObjects.MainActivity.TotalPrice = cart.TotalPrice;
 		}
 		catch (Exception x)
 		{

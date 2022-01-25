@@ -17,16 +17,39 @@ public class CartService : BaseApiService, ICartService
 	public bool AddCartItemToCacheFile(CartItem inserted)
 	{
 		var cart = this.GetCartFromCacheFile();
-		this.AddCartItem(inserted, cart.CartList);
-		cart.TotalPrice += inserted.TotalPrice;
+		cart.CartList = this.AddCartItem(inserted, cart.CartList);
+		cart.TotalPrice = this.CalculateTotalPrice(cart);
 		return this.SaveCartToCacheFile(cart);
+	}
+
+	public double CalculateTotalPrice(Cart cart)
+	{
+		if (cart == null)
+		{
+			return 0;
+		}
+
+		var cartItems = cart.CartList;
+		if (cartItems == null)
+		{
+			return 0;
+		}
+
+		double value = 0;
+		foreach (var item in cartItems)
+		{
+			item.TotalPrice = item.Price * item.Quantity;
+			value += item.TotalPrice;
+		}
+
+		return value;
 	}
 
 	/// <summary>
 	/// update if exist.
 	/// Or add if not exist.
 	/// </summary>
-	protected void AddCartItem(CartItem inserted, CartItem[] updated)
+	protected CartItem[] AddCartItem(CartItem inserted, CartItem[] updated)
 	{
 		//convert to dictionary; product id, item
 		var dic = new SortedList<long, CartItem>();
@@ -45,12 +68,13 @@ public class CartService : BaseApiService, ICartService
 			dic[insertedProductId] = inserted;
 		}
 		updated = dic.Values.ToArray();
+		return updated;
 	}
 
 	/// <summary>
 	/// refresh price for 1 product
 	/// </summary>
-	public void CalculateTotalPrice(CartItem inserted)
+	public void CopyProductProperties(CartItem inserted)
 	{
 		var productId = inserted.ProductId;
 		ProductItem product;
@@ -63,9 +87,15 @@ public class CartService : BaseApiService, ICartService
 		{
 			product = this._productService.GetProductByIdFromCacheFile(productId);
 		}
+
+		//copy properties for cart display
 		if (product != null)
 		{
-			inserted.TotalPrice = inserted.Quantity * product.Price;
+			inserted.Name = product.Name;
+			inserted.Code = product.Code;
+			inserted.Price = product.Price;
+			inserted.ProductId = product.Id;
+			inserted.UnitName = product.UnitName;
 		}
 	}
 

@@ -7,10 +7,11 @@ public interface ICartService : IBaseApiService
 	bool AddCartItemToCacheFile(CartItem inserted);
 
 	bool AddCartItemViaApi(AddCartItemRequest inserted);
-	void CalculateTotalPrice(CartItem inserted);
+	void CopyProductProperties(CartItem inserted);
 
 	double GetCartTotalPriceFromApi(string userName);
 	bool SaveCartToCacheFile(Cart cart);
 	CartItem[] GetCartItemsFromApi(string userName);
 	Cart GetCartFromApi(string userName);
+	double CalculateTotalPrice(Cart cart);
 }
