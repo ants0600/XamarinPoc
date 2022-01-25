@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/scrollView1">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+    >
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout4"
+            android:weightSum="100">
+
+            <TextView
+                android:text="product Id"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/lbComplexProductListItemProductId"
+                android:visibility="gone" />
+
+
+
+            <!--name, price, code-->
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/linearLayout1"
+                android:layout_weight="50">
+                <!--name-->
+                <TextView
+                    android:text="name"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/lbComplexProductListItemName"
+                    android:layout_weight="80"
+        />
+                <!--code-->
+                <TextView
+                    android:text="code"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/lbComplexProductListItemCode"
+                    android:layout_weight="80"
+        />
+                <!--price-->
+                <TextView
+                    android:text="price"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/lbComplexProductListItemPrice"
+                    android:layout_weight="16"
+        />
+
+            </LinearLayout>
+
+            <!--image-->
+            <ImageView
+                android:src="@android:drawable/ic_menu_gallery"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/imgCard" />
+        </LinearLayout>
+
+
+
+
+        <!--unit, quantity, add to cart-->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout3" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout2"
+            android:weightSum="500"
+        >
+            <!--unit-->
+            <TextView
+                android:text="Medium Text"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lbComplexProductListItemUnit"
+                android:width="50dp"
+        />
+            <!--quantity-->
+            <EditText
+                android:hint="qty"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/txComplexProductListItemQuantity"
+                android:inputType="number"
+                android:width="50dp"
+                android:background="#b0c4de" 
+        />
+
+        </LinearLayout>
+        <!--add to cart-->
+        <Button
+            android:text="Add to Cart"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/btComplexProductListAddToCart"
+            android:height="40px"
+            android:width="150px"
+        />
+
+    </LinearLayout>
+
+
+
+</ScrollView>
+
+
+

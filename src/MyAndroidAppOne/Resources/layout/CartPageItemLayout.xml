@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:p4="http://xamarin.com/mono/android/designer"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/scrollView1">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout1">
+        <!--name-->
+        <TextView
+            p4:placeholder="true"
+            android:text="name"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/lbCartItemName"
+            android:layout_weight="0.3" />
+        <!--code-->
+        <TextView
+            p4:placeholder="true"
+            android:text="code"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/lbCartItemCode"
+            android:layout_weight="0.1"/>
+        <!--quantity-->
+        <TextView
+            p4:placeholder="true"
+            android:text="qty"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/lbCartItemQuantity"
+            android:layout_weight="0.4"
+            android:textAlignment="textEnd"
+            android:paddingEnd="3px"/>
+        <!--total price-->
+        <TextView
+            p4:placeholder="true"
+            android:text="0"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/lbCartItemTotalPrice"
+            android:width="50dp"
+            android:layout_weight="0.2"
+            android:textAlignment="textEnd" 
+            />
+    </LinearLayout>
+</ScrollView>
